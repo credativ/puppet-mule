@@ -1,16 +1,9 @@
 #node /.*/ { 
+    class { 'java-openjdk': 
+    }
 
-  class { "java-openjdk": 
-
-  }
-  class { "git": 
-
-  }
-  class { "maven": 
-
-  }
-  class { "mule": 
-
-  }
-  
+    class { 'mule':
+	      mule_uri => hiera('mule_uri'),
+	      mule_base_file => hiera('mule_base_file')
+    }
 #}

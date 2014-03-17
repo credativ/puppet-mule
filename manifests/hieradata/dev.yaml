@@ -1,0 +1,4 @@
+# Host entries
+mule_version: "3.4.0"
+mule_base_file: "mule-standalone-%{hiera('mule_version')}"
+mule_uri: "http://dist.codehaus.org/mule/distributions/%{hiera('mule_file')}"
