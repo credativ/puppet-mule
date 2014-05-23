@@ -1,4 +1,0 @@
-mule_version: "3.4.0"
-mule_base_file: "mule-enterprise-standalone-%{hiera('mule_version')}"
-mule_file: "%{hiera('mule_base_file')}.tar.gz"
-java-openjdk::java_version: "7"

@@ -1,0 +1,6 @@
+rvm: 2.0.0
+notifications:
+  email:
+    - ryandamiencarter@gmail.com
+env:
+  - PUPPET_VERSION=3.2.0
