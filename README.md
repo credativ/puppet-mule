@@ -1,20 +1,16 @@
 # puppet-mule #
 
-A Puppet/Vagrant setup to get Mule up and running quickly using Puppet.
-
+A Puppet module to install and manage the Mule ESB community runtime.
 ## Usage ##
 
-1. Clone the Vagrant setup files onto your computer somewhere:
-
-        git clone --recursive git@github.com:ryandcarter/puppet-mule.git
-
-2. Change into the directory you just created.
-
-        cd vagrant-mule
-
-3. Start Vagrant.
-
-        vagrant up
+    node default {
+      class  { 'java':
+        distribution => 'jdk',
+        version      => 'latest',
+      }
+      ->
+      class  { 'mule': }
+    }
 
 Licence
 ----------------------------
