@@ -10,7 +10,7 @@ A Puppet module to install and manage the Mule ESB community runtime.
       }
       ->
       class  { 'mule': }
-    }
+    } 
 
 Licence
 ----------------------------
