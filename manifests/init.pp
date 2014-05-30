@@ -44,7 +44,7 @@ class mule(
 
   archive::download { $archive:
     ensure        => present,
-    url           => $mule_mirror/$archive,
+    url           => "$mule_mirror/$archive",
     src_target    => $mule_install_dir,
     checksum      => false
   }
