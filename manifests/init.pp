@@ -33,7 +33,7 @@
 class mule(
   $mule_mirror = 'http://dist.codehaus.org/mule/distributions',
   $mule_version = '3.4.0',
-  $mule_install_dir = '/usr/local',
+  $mule_install_dir = '/opt',
   $java_home = '/usr/lib/jvm/default-java',
   $user = 'root',
   $group = 'root') {
