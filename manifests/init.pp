@@ -46,7 +46,8 @@ class mule(
     ensure        => present,
     url           => "$mule_mirror/$archive",
     src_target    => $mule_install_dir,
-    checksum      => false
+    checksum      => false,
+    exec_path     => "/usr/ucb:/usr/bin:/bin:/usr/sbin:/sbin"
   }
 
   archive::extract { $dist:
