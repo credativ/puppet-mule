@@ -21,7 +21,7 @@
 #   Installs and manages the Mule ESB community runtime.
 #
 # Requires:
-#   Module['Netinstall']
+#   Module['Archive']
 #   Class['java']
 #
 # Sample Usage:
@@ -39,23 +39,34 @@ class mule(
   $group = 'root') {
 
   $basedir = "${mule_install_dir}/mule"
+  $dist = "mule-standalone-${version}"
+  $archive = "${dist}.tar.gz"
 
-  netinstall { 'mule':
-    url             => "${mule_mirror}/mule-standalone-${mule_version}.tar.gz",
-    destination_dir => $mule_install_dir
+  archive::download { "$archive":
+    ensure        => present,
+    url           => ${mirror}/$archive,
+    src_target    => $parentdir,
+    checksum      => false,
+  }
+
+  archive::extract { "${dist}":
+    ensure     => present,
+    target     => $parentdir,
+    src_target => $parentdir,
+    require    => Archive::Download["${archive}"]
   }
 
   file { $basedir:
     ensure  => 'link',
-    target  => "${mule_install_dir}/mule-standalone-${mule_version}",
-    require => Netinstall['mule']
+    target  => "${mule_install_dir}/${dist}",
+    require => Archive::Extract["${dist}"]
   }
 
-  file { "${mule_install_dir}/mule-standalone-${mule_version}":
+  file { "${mule_install_dir}/${dist}":
     ensure  => directory,
     owner   => $user,
     group   => $group,
-    require => Netinstall['mule']
+    require => Archive::Extract["${dist}"]
   }
 
   file { '/etc/profile.d/mule.sh':

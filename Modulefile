@@ -8,5 +8,5 @@ description 'Mule ESB Puppet Module'
 project_page 'https://github.com/ryandcarter/puppet-mule'
 
 ## Add dependencies, if any:
-dependency 'puppetlabs/stdlib', '>= 0.1.6'
-dependency 'puppetlabs/java', '>= 0.1.0'
+dependency 'camptocamp/archive'
+dependency 'puppetlabs/java'
