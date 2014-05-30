@@ -39,20 +39,20 @@ class mule(
   $group = 'root') {
 
   $basedir = "${mule_install_dir}/mule"
-  $dist = "mule-standalone-${version}"
+  $dist = "mule-standalone-${mule_version}"
   $archive = "${dist}.tar.gz"
 
-  archive::download { "$archive":
+  archive::download { $archive:
     ensure        => present,
-    url           => ${mirror}/$archive,
-    src_target    => $parentdir,
-    checksum      => false,
+    url           => $mule_mirror/$archive,
+    src_target    => $mule_install_dir,
+    checksum      => false
   }
 
-  archive::extract { "${dist}":
+  archive::extract { $dist:
     ensure     => present,
-    target     => $parentdir,
-    src_target => $parentdir,
+    target     => $mule_install_dir,
+    src_target => $mule_install_dir,
     require    => Archive::Download["${archive}"]
   }
 
