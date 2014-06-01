@@ -8,5 +8,5 @@ description 'Mule ESB Puppet Module'
 project_page 'https://github.com/ryandcarter/puppet-mule'
 
 ## Add dependencies, if any:
-dependency 'curator/archive'
+dependency 'gini/archive'
 dependency 'puppetlabs/java'
