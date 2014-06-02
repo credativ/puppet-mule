@@ -46,20 +46,21 @@ class mule(
     ensure   => present,
     url      => "${mule_mirror}/${archive}",
     target   => $mule_install_dir,
-    checksum => false
+    checksum => false,
+    timeout  => 0
   }
 
   file { $basedir:
     ensure  => 'link',
     target  => "${mule_install_dir}/${dist}",
-    require => Archive["${dist}"]
+    require => Archive[$dist]
   }
 
   file { "${mule_install_dir}/${dist}":
     ensure  => directory,
     owner   => $user,
     group   => $group,
-    require => Archive::Extract["${dist}"]
+    require => Archive::Extract[$dist]
   }
 
   file { '/etc/profile.d/mule.sh':
