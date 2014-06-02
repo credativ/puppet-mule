@@ -42,24 +42,17 @@ class mule(
   $dist = "mule-standalone-${mule_version}"
   $archive = "${dist}.tar.gz"
 
-  archive::download { $archive:
-    ensure        => present,
-    url           => "$mule_mirror/$archive",
-    src_target    => $mule_install_dir,
-    checksum      => false
-  }
-
-  archive::extract { $dist:
-    ensure     => present,
-    target     => $mule_install_dir,
-    src_target => $mule_install_dir,
-    require    => Archive::Download["${archive}"]
+  archive { $dist:
+    ensure   => present,
+    url      => "${mule_mirror}/${archive}",
+    target   => $mule_install_dir,
+    checksum => false
   }
 
   file { $basedir:
     ensure  => 'link',
     target  => "${mule_install_dir}/${dist}",
-    require => Archive::Extract["${dist}"]
+    require => Archive["${dist}"]
   }
 
   file { "${mule_install_dir}/${dist}":
