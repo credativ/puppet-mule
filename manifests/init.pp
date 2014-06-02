@@ -60,7 +60,7 @@ class mule(
     ensure  => directory,
     owner   => $user,
     group   => $group,
-    require => Archive::Extract[$dist]
+    require => Archive[$dist]
   }
 
   file { '/etc/profile.d/mule.sh':
