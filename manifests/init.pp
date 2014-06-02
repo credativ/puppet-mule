@@ -43,11 +43,10 @@ class mule(
   $archive = "${dist}.tar.gz"
 
   archive::download { $archive:
-    ensure           => present,
-    url              => "$mule_mirror/$archive",
-    src_target       => $mule_install_dir,
-    checksum         => false,
-    dependency_class => curl
+    ensure        => present,
+    url           => "$mule_mirror/$archive",
+    src_target    => $mule_install_dir,
+    checksum      => false
   }
 
   archive::extract { $dist:
