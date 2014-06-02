@@ -43,11 +43,12 @@ class mule(
   $archive = "${dist}.tar.gz"
 
   archive { $dist:
-    ensure   => present,
-    url      => "${mule_mirror}/${archive}",
-    target   => $mule_install_dir,
-    checksum => false,
-    timeout  => 0
+    ensure           => present,
+    url              => "${mule_mirror}/${archive}",
+    target           => $mule_install_dir,
+    checksum         => false,
+    timeout          => 0,
+    strip_components => 1
   }
 
   file { $basedir:
