@@ -1,6 +1,6 @@
 {
   "name" : "ryandcarter-mule",
-  "version" : "1.0.0",
+  "version" : "0.1.0",
   "author" : "ryandcarter",
   "license" : "Licensed under (Apache 2.0)",
   "summary" : "Mule ESB Puppet Module",
