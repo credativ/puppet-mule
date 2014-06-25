@@ -32,13 +32,11 @@ define mule::app::deploy(
   $temp_dir = '/tmp'
   $app_name = regsubst($app_url, '(^\w+.*\/)', '')
 
-  archive { $app_name:
+  archive::download { $app_name:
     ensure           => present,
     url              => $app_url,
     target           => $temp_dir,
-    checksum         => false,
-    timeout          => 0,
-    strip_components => 1
+    checksum         => false
   }
   file { "${apps_dir}/${app_name}":
     ensure  => 'present',
