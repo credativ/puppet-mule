@@ -41,7 +41,7 @@ define mule::app::deploy(
 
   file { "${apps_dir}/${app_name}":
     ensure  => 'present',
-    source  => "${temp_dir}/${app_name}"
+    source  => "${temp_dir}/${app_name}",
     require => Archive::Download[$app_name]
   }
 
