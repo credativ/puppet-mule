@@ -20,7 +20,7 @@
 # node default {
 #   class { 'mule': }
 #   mule::app::deploy { "HelloApp":
-#     app_url => 'https://github'
+#     app_url => 'https://repository.mulesoft.org/nexus/content/repositories/releases/org/mule/examples/mule-example-echo/3.5.0/mule-example-echo-3.5.0.zip'
 #   }
 # }
 #
