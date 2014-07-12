@@ -72,8 +72,8 @@ class mule(
 
   file { '/etc/init.d/mule':
     ensure  => present,
-    owner   => root,
-    group   => root,
+    owner   => $user,
+    group   => $group,
     mode    => '0755',
     content => template('mule/mule.init.erb'),
     require => File[$basedir]
