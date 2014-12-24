@@ -1,5 +1,5 @@
 name    'ryandcarter-mule'
-version '0.1.0'
+version '0.2.0'
 source 'git://github.com/ryandcarter/puppet-mule'
 author 'ryandcarter'
 license 'Apache Version 2.0'
