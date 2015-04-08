@@ -11,6 +11,10 @@ PID_FILE="<%= @basedir %>/bin/mule.pid"
 
 PROG="mule"
 
+if [ -f /lib/lsb/init-functions ]; then
+    . /lib/lsb/init-functions
+fi
+
 help() {
     echo "$0 INVALID SYNTAX ::  Use:"
 	echo "$0 {stop | start | restart | status}"
