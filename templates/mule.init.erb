@@ -42,7 +42,7 @@ stop() {
         rm -f ${PID_FILE}
     else
         # The mule procs for mule cle user
-        PIDS=`ps -u ${MULE_USER} --no-headers -o pid,cmd | grep "${MULE_HOME}" | awk '{ print $1 }'`
+        PIDS=`ps -u ${MULE_USER} --no-headers -o pid,cmd | grep "${MULE_HOME}" | grep -v grep | awk '{ print $1 }'`
         for PID in ${PIDS}; do
             for  i in 1 2 3; do
                 if [[ -d /proc/${PID} ]]; then
@@ -66,7 +66,7 @@ status(){
 	    PID=`cat ${PID_FILE}`
     else
         # The mule procs for mule cle user
-        PID=`ps -u ${MULE_USER} --no-headers -o pid,cmd | grep "${MULE_HOME}" | awk '{ print $1 }'`
+        PID=`ps -u ${MULE_USER} --no-headers -o pid,cmd | grep "${MULE_HOME}" | grep -v grep | awk '{ print $1 }'`
     fi
 
     EXIT=0
