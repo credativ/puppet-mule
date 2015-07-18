@@ -32,7 +32,7 @@
 #
 class mule(
   $mule_mirror = 'https://repository.mulesoft.org/nexus/content/repositories/releases/org/mule/distributions/mule-standalone/',
-  $mule_version = '3.6.1',
+  $mule_version = '3.7.0',
   $mule_install_dir = '/opt',
   $java_home = '/usr/lib/jvm/default-java',
   $user = 'root',
@@ -40,7 +40,7 @@ class mule(
 
   $basedir = "${mule_install_dir}/mule"
   $dist = "mule-standalone-${mule_version}"
-  $archive = "${dist}.tar.gz"
+  $archive = "${dist}.zip"
 
   archive { $dist:
     ensure           => present,
