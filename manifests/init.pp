@@ -48,6 +48,7 @@ class mule(
     target           => $mule_install_dir,
     checksum         => false,
     timeout          => 0,
+    extension        => 'tar.gz',
     strip_components => 1
   }
 
