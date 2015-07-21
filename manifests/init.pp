@@ -44,7 +44,7 @@ class mule(
 
   archive { $dist:
     ensure           => present,
-    url              => "${archive}",
+    url              => $archive,
     target           => $mule_install_dir,
     checksum         => false,
     timeout          => 0,
@@ -57,11 +57,17 @@ class mule(
     require => Archive[$dist]
   }
 
-  file { "${mule_install_dir}/${dist}":
+  $user_owned_dirs = ["${basedir}/conf", "${basedir}/bin",
+                        "${basedir}/domains",
+                        "${basedir}/logs",
+                        "${basedir}/apps",
+                        "${mule_install_dir}/${dist}", ]
+
+  file { $user_owned_dirs:
     ensure  => directory,
     owner   => $user,
     group   => $group,
-    require => Archive[$dist]
+    require => Archive[$dist],
   }
 
   file { '/etc/profile.d/mule.sh':
@@ -72,8 +78,8 @@ class mule(
 
   file { '/etc/init.d/mule':
     ensure  => present,
-    owner   => $user,
-    group   => $group,
+    owner   => 'root',
+    group   => '0',
     mode    => '0755',
     content => template('mule/mule.init.erb'),
     require => File[$basedir]
