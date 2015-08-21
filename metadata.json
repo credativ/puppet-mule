@@ -7,5 +7,5 @@
   "source" : "https://github.com/ryandcarter/puppet-mule",
   "project_page" : "https://forge.puppetlabs.com/ryandcarter/mule",
   "issues_url" : "https://github.com/ryandcarter/puppet-mule/issues",
-  "dependencies" : [ { "name": "puppetlabs-java", "version_requirement": ">=0.1.0" }, { "name": "camptocamp-archive", "version_requirement": ">= 0.8.0" } ]
+  "dependencies" : [ { "name": "puppetlabs-java", "version_requirement": ">=0.1.0" }, { "name": "camptocamp-archive", "version_requirement": ">=0.8.0" } ]
 }
