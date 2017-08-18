@@ -41,20 +41,22 @@ class mule(
   $basedir = "${mule_install_dir}/mule"
   $dist = "mule-standalone-${mule_version}"
   $archive = "${mule_mirror}/${mule_version}/${dist}.tar.gz"
+  $archive_path = "/usr/src/${dist}.tar.gz"
 
-  archive { $dist:
-    ensure           => present,
-    url              => $archive,
-    target           => $mule_install_dir,
-    checksum         => false,
-    timeout          => 0,
-    strip_components => 1
+  archive { 'mule-standalone':
+    path         => $archive_path,
+    ensure       => present,
+    url          => $archive,
+    extract      => true,
+    user         => $user,
+    group        => $group,
+    extract_path => $mule_install_dir,
   }
 
   file { $basedir:
     ensure  => 'link',
     target  => "${mule_install_dir}/${dist}",
-    require => Archive[$dist]
+    require => Archive[$archive_path]
   }
 
   $user_owned_dirs = ["${basedir}/conf", "${basedir}/bin",
@@ -67,7 +69,7 @@ class mule(
     ensure  => directory,
     owner   => $user,
     group   => $group,
-    require => Archive[$dist],
+    require => Archive[$archive_path],
   }
 
   file { '/etc/profile.d/mule.sh':
